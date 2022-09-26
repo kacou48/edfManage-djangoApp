@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+
+
+<!--blog section end-->
+{% block blog-section %}
+<section class="blog" id="blog">
+	<h1 class="heading"> Notre Blog</h1>
+	<div class="blog-slider swiper">
+		<div class="swiper-wrapper">
+			{% for post in posts %}
+			<div class="slide swiper-slide">
+				<div class="image">
+					<img src="{{ post.imageURL }}" data-aos=fade-down>
+				</div>
+				<div class="content">
+					<div class="date"><span class="fa-solid fa-clock"></span>{{ post.date|naturaltime }}</div>
+					<a href="{% url 'post_detail' post.slug post.id %}" class="titre">{{ post.titre|truncatewords:"9" }}</a>
+					<p data-aos=fade-down>{{ post.media }}{{ post.contenu|safe|truncatewords:"20" }}</p>
+					<a href="{% url 'post_detail' post.slug post.id %}" class="link">lire plus</a>
+				</div>
+			</div>
+			{% endfor %}	
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</section>
+{% endblock blog-section %}
+<!--end blog section end-->
+
+
+{% block content %}
+
+{% endblock %}

@@ -1,0 +1,428 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="EDOF l'espace des organismes de formation,
+	Plateforme EDOF, Les formations dédiées à la création ou reprise d'entreprises,
+	Les formations référencées sous EDOF, Formation EDOF, 
+	"/>
+	<title>{% block head_title %}Ma page formation{% endblock %}</title>
+
+
+	<!-- aos css cdn linl -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+	 <!-- material icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+		rel="stylesheet">
+
+	<!-- font awesome cdnjs.com -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!-- css file -->
+	{% block css_link %}
+	 <link rel="stylesheet" type="text/css" href="{% static 'css/s.css' %}">
+	{% endblock %}
+
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+
+</head>
+<body>
+	{% block header %}
+	<!--header section-->
+	<header class="header">
+		<a href="{% url 'index' %}" class="logo"><img src=""><span>MA PAGE</span><br> FORMATION</a>
+
+		<nav class="navbar">
+			<a href="#home">Accuiel</a>
+			<a href="#service">Services</a>
+			
+			<a href="#tarif">Tarifs</a>
+			<a href="#blog">Blog</a>
+			{% if request.user.is_authenticated %}
+			<a href="{% url 'dashbord' %}">Dashbord</a>
+			{% else %}
+			<a href="{% url 'user_login' %}">connection</a>
+			{% endif %}
+		</nav>
+
+		<span class="material-icons-sharp fas-bar menu" id="menu-btn">menu</span>
+		<span class="material-icons-sharp fas-close menu" id="close-btn">close</span>
+
+	</header>
+	<!--header section end-->
+
+	{% endblock header %}
+
+  {% include 'core/messages.html' %}
+
+
+
+
+	{% block home %}
+
+
+	<!--home/ lending page section end-->
+	<section class="home" id="home">
+		<div class="image" data-aos=zoom-in>
+			<img src="{% static 'images/ba.png' %}" alt="accuiel">	
+		</div>
+
+		<div class="content" data-aos=zoom-in>
+			<h1>lorem upsi consectetur adipiscing adipiscing.</h1>
+				<h3>adipiscing elit you.</h3>
+				<p> Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+			<a href="{% url 'user_registration' %}"><button class="button">Souscrire</button></a>	
+		</div>
+	</section>
+	<!--home section end-->
+
+
+
+	<!--nos  services section -->
+	<section class="service" id="service">
+		<h1 class="heading">Nos <span>ser</span>vices</h1>
+		<div class="row">
+			<div class="content">
+				<div class="box" data-aos=fade-up>
+					<h3><span class="material-icons-sharp">receipt_long</span>la scelerisque ultricies</h3>
+					<p>Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+				</div>
+				<div class="box" data-aos=fade-up>
+					<h3><span class="material-icons-sharp">account_tree</span>consectetur adipiscing</h3>
+					<p>Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+				</div>
+				<div class="box" data-aos=fade-up>
+					<h3><span class="material-icons-sharp">spellcheck</span>consectetur adipiscing</h3>
+					<p>Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+				</div>
+				<div class="box" data-aos=fade-up>
+					<h3><span class="material-icons-sharp">forward_30</span>Nam non est id tellus</h3>
+					<p>Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+				</div>
+			</div>
+
+			<div class="image" data-aos=fade-up>
+				<img src="{% static 'images/cont.png' %}">
+			</div>
+		</div>
+	</section>
+	<!--service section end-->
+
+	<!--notre objectif/offre about section -->
+	<section class="about" id="about">
+		<h1 class="heading">Notre offre</h1>
+		<div class="row">
+			<div class="image" data-aos=fade-down>
+				<img src="{% static 'images/ab.png' %}">
+			</div>
+			<div class="content">
+				<h3>consectetur adipiscing</h3>
+				<p data-aos=fade-up> Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+				<p data-aos=fade-up> Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce</p>
+				<a data-aos=fade-up href="{% url 'user_registration' %}"><button class="button">Nous rejoindre</button></a>
+			</div>
+		</div>
+	</section>
+	<!--about section end-->
+
+
+	<!-- section commentaire des client section -->
+	<section class="reviews" id="reviews">
+		<h1 class="heading">Avis des clients</h1>
+		<div class="reviews-slider swiper">
+			<div class="swiper-wrapper">
+				<div class="slide swiper-slide">
+					<p data-aos=fade-down>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis laoreet gravida, nunc lorem cursus augue</p>
+					<div class="user">
+						<img src="{% static 'images/t1.jpg' %}">
+						<div class="user-info">
+							<h3>Vivien Light</h3>
+							<div class="stars">
+								<span class="fa-brands fa-facebook"></span>
+				                <span class="fa-brands fa-instagram"></span>
+				                <span class="fa-brands fa-twitter"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide swiper-slide">
+					<p data-aos=fade-down>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis laoreet gravida, nunc lorem cursus augue</p>
+					<div class="user">
+						<img src="{% static 'images/t1.jpg' %}">
+						<div class="user-info">
+							<h3>Vivien Light</h3>
+							<div class="stars">
+								<span class="fa-brands fa-facebook"></span>
+				                <span class="fa-brands fa-instagram"></span>
+				                <span class="fa-brands fa-twitter"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide swiper-slide">
+					<p data-aos=fade-down>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis laoreet gravida, nunc lorem cursus augue</p>
+					<div class="user">
+						<img src="{% static 'images/t1.jpg' %}">
+						<div class="user-info">
+							<h3>Vivien Light</h3>
+							<div class="stars">
+								<span class="fa-brands fa-facebook"></span>
+				                <span class="fa-brands fa-instagram"></span>
+				                <span class="fa-brands fa-twitter"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide swiper-slide">
+					<p data-aos=fade-down>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis laoreet gravida, nunc lorem cursus augue</p>
+					<div class="user">
+						<img src="{% static 'images/t1.jpg' %}">
+						<div class="user-info">
+							<h3>Vivien Light</h3>
+							<div class="stars">
+								<span class="fa-brands fa-facebook"></span>
+				                <span class="fa-brands fa-instagram"></span>
+				                <span class="fa-brands fa-twitter"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide swiper-slide">
+					<p data-aos=fade-down>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis laoreet gravida, nunc lorem cursus augue</p>
+					<div class="user">
+						<img src="{% static 'images/t1.jpg' %}">
+						<div class="user-info">
+							<h3>Vivien Light</h3>
+							<div class="stars">
+								<span class="fa-brands fa-facebook"></span>
+				                <span class="fa-brands fa-instagram"></span>
+				                <span class="fa-brands fa-twitter"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="slide swiper-slide">
+					<p data-aos=fade-down>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis laoreet gravida, nunc lorem cursus augue</p>
+					<div class="user">
+						<img src="{% static 'images/t1.jpg' %}">
+						<div class="user-info">
+							<h3>Vivien Light</h3>
+							<div class="stars">
+								<span class="fa-brands fa-facebook"></span>
+				                <span class="fa-brands fa-instagram"></span>
+				                <span class="fa-brands fa-twitter"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+	</section>
+	<!--commentaire section end-->
+
+
+
+
+	<!--tarif section-->
+    <section class="tarif" id="tarif">
+    	<h1 class="heading">Nos tarifs</h1>
+    	<div class="containerAb loginPage">
+    		<div class="column-6" data-aos=fade-up>
+    		    <div id="right-wrapper">
+
+			        <h3>Quis nostrud exercitation ullamco laboris nisi</h3>
+
+			        <p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
+			    </div>
+    	    </div>
+    	    <div class="column-6" data-aos=fade-up>
+    		    <div class="left-wrapper left-tarif" id="left-wrapper">
+    	            <div id="left-wrapper-header ">
+    	            	<h2>Standard</h2>
+    		    		<span>10 jours d'essai gratuit</span>
+    	            </div>
+    		    		<ul>
+    		    			<li>lorem upsi desa</li>
+    		    			<li>lorem upsi desa</li>
+    		    			<li>lorem upsi desa</li>
+    		    			<li>lorem upsi desa</li>
+    		    			<li>lorem upsi desa</li>
+    		    		</ul>
+    		    	<a href="{% url 'user_registration' %}"><button class="button">S'abonner</button></a>
+    		    </div>
+    	    </div>
+    	</div>
+    </section>
+    <!--end tarif section-->
+
+
+
+    <!--images section -->
+    <!--section id="enImage">
+    <h1 class="heading" data-aos=zoom-in>Ma page formation en images</h1>
+		<div class="swiper mySwiper sliderImage" data-aos="fade-up">
+	      <div class="swiper-wrapper">
+	        <div class="swiper-slide images">
+	        	<img src="{% static 'images/im0.png' %}" alt="">
+	        </div>
+	        <div class="swiper-slide images">
+	            <img src="{% static 'images/im1.png' %}" alt="">
+	        </div>
+	        <div class="swiper-slide images">
+	        	<img src="{% static 'images/im2.png' %}" alt="">
+	        </div>
+	      </div>
+	      <div class="swiper-pagination"></div>
+	    </div>
+	</section-->
+
+	<section class="head" aria-label="Newets photos">
+		<h1 class="heading" data-aos=zoom-in>Ma page formation en images</h1>
+	   <div class="banner">
+	      <div class="swiper mySwiper banner-slider" data-aos="fade-up">
+	          <div class="swiper-wrapper wraper">
+	            <div class="swiper-slide">
+	             <img src="images/im1.png" />
+	            </div>
+	            <div class="swiper-slide">
+	             <img src="images/im0.png" />
+	            </div>
+	            <div class="swiper-slide">
+	             <img src="images/im2.png" />
+	            </div>
+	          </div>
+	         <div class="swiper-pagination"></div>
+	      </div>
+	   </div> 
+  </section>
+	<!--end image section-->
+
+
+
+
+
+	<!--blog section: importé depuis un autre fichié-->
+	{% block blog-section %}
+	
+	{% endblock blog-section %}
+	<!--end blog section end-->
+
+    
+ 
+  <!--notre equipe section -->
+  {% block equipe-section %}
+	<section class="doctors" id="doctors">
+		<h1 class="heading">Notre equipe</h1>
+		<div class="box-container">
+			<div class="box">
+				<img src="{% static 'images/t1.jpg' %}" data-aos=fade-down>
+				<h3>Vivien Light</h3>
+				<h5>expert en lorem upsi</h5>
+				<div class="share" data-aos=fade-down>
+					<span class="fa-brands fa-facebook"></span>
+				    <span class="fa-brands fa-instagram"></span>
+				    <span class="fa-brands fa-twitter"></span>
+				</div>
+			</div>
+
+			<div class="box">
+				<img src="{% static 'images/t1.jpg' %}" data-aos=fade-down>
+				<h3>Vivien Light</h3>
+				<h5>expert en lorem upsi</h5>
+				<div class="share" data-aos=fade-down>
+					<span class="fa-brands fa-facebook"></span>
+				    <span class="fa-brands fa-instagram"></span>
+				    <span class="fa-brands fa-twitter"></span>
+				</div>
+			</div>
+
+			<div class="box">
+				<img src="{% static 'images/t1.jpg' %}" data-aos=fade-down>
+				<h3>Vivien Light</h3>
+				<h5>expert en lorem upsi</h5>
+				<div class="share" data-aos=fade-down>
+					<span class="fa-brands fa-facebook"></span>
+				    <span class="fa-brands fa-instagram"></span>
+				    <span class="fa-brands fa-twitter"></span>
+				</div>
+			</div>
+		</div>
+	</section>
+  {% endblock equipe-section %}
+
+	
+   <!--notre equipe section end --> 
+
+
+   <!--contact section: importé depuis un autre fichié-->
+     {% include 'core/contact.html' %} 
+   <!--contact section end-->
+  
+
+
+  {% endblock home %}
+
+   
+
+
+
+
+  {% block content %}
+		 
+  {% endblock %}
+
+  
+  <section id="footer">
+  {% block footer %}
+  
+
+   {% include 'core/footer.html' %}
+
+  {% endblock %}
+  </section>
+
+  <!-- customer link-->
+   <script type="text/javascript" src="{% static 'js/js.js' %}"></script>
+
+
+  
+  <!--/pour le swipper-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript" src="{% static 'js/monSwipe.js' %}"></script>
+
+    <!-- aos js file cdn link-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  
+
+   <!-- jquery link-->
+   <script type="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  
+
+  <script type="text/javascript">
+  	AOS.init({
+  		duration:1000,
+  		delay:400
+  	});
+  </script>
+
+  
+
+
+  {% block script %}
+  {% endblock script %}
+
+</body>
+</html>

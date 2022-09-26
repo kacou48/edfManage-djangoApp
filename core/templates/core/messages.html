@@ -1,0 +1,17 @@
+{% if messages %}
+<section style="padding: 2rem 12%; margin-top: 10px;justify-content: center;align-content: center;position: absolute;align-items: center;z-index: 5000;" class="tab">
+
+	{% for message in messages %}
+	<div class="" style="margin-top:10rem">
+	    <div style="font-size:2rem;font-family: sans-serif;background: hsl(152, 51%, 52%);text-transform: none;" class="alert alert-{{ message.tags }} text-center">
+	    	<button type="button" id="close" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size:2rem;padding-left: .5rem;cursor: pointer;background: red">&times;</span></button>
+	    	{{ message }}
+	    </div>
+	</div>
+	{% endfor %}
+</section>
+{% endif %}
+
+
+
+

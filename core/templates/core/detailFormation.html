@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <!-- custom CSS -->
+    <!--link rel="stylesheet" href="css/style.css"-->
+
+    <style type="text/css">
+        
+        .section-header{
+            background-color: #fff;
+        }
+
+        body{
+            background-color: #fafafa;
+        }
+
+
+        .box{
+            display: block;
+            position: relative;
+            padding: 16px;
+            border-radius: 4px;
+            color: #164194;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 50%);
+            -ms-box-shadow: 0 1px 3px 0 rgba(0,0,0,.5);
+            background-color: #fff;
+        }
+
+        .box p{
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .btn{
+            border-radius: 30px;
+        }
+
+        .breadcrumb{
+            background: transparent !important;
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            content: "\f054";
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="section-header shadow">
+
+        <div class="container">
+            <div class="row py-4">
+
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{% url 'index' }">Accueil</a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'dashbord' %">Dashbord</a></li>
+                          <li class="breadcrumb-item"><a href="{% url 'list_formation' %}">Formation</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Description détaillée</li>
+                        </ol>
+                      </nav>
+                    
+                </div>
+
+                <div class="col-12">
+                    <div class="row align-items-center">
+                        <a class="text-dark mr-4" href="#"><h3 class="mb-0"><i class="fa-solid fa-arrow-left"></i></h3></a>
+                        <h2 class="mb-0 font-weight-light">Description détaillée</h2>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!--FIN MENU / HEADER -->
+        
+
+
+                <!-- PT de la formation -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-sm-6">
+                {{ formation.media }}
+                <div class="box mb-4">
+                   <h4 class="mb-2">Les points forts de la formation</h4>  
+                   <p class="mb-0">
+                    <span>Comprendre l'environnement technique de la PAO Envisager les réalisations possibles en PAO Mieux dialoguer avec les agences, les freelance, et appréhender les évolutions métier Évaluer les travaux que l'on peut réaliser et ceux que l'on doit sous traiter</span>
+                    </p>
+                    <p>{{ formation.point_fort|safe }}</p>
+                </div>
+
+                 <!-- FIN PT --> 
+               
+                 <!-- CONTENU -->
+                <div class="box mb-4">
+                    <h4 class="mb-2">Contenu de la formation</h4>
+                    <p class="mb-0">100% e-learning 3 niveaux de formation (débutant, confirmé, expert) 27 Modules (123
+                        leçons interactives) Exercices imprimables Exercices interactifs</p>
+                    <p>{{ formation.contenu|safe }}</p>
+                </div>
+
+                 <!--FIN CONTENU -->
+                
+            
+                <!--RIEN FAIRE -->
+                <div class="box mb-4">
+                    <h4 class="mb-2">Modalités pédagogiques</h4>
+                    <p class="mb-3">
+                        Ici sera affiché les informations que vous avez rempli dans la partie session de la formation
+                    </p>
+                     </div>
+                 <div class="box mb-4">
+                    <h4 class="mb-2">Durée et rythme de la formation</h4>
+                    <p class="mb-0">Ici sera affiché les informations que vous avez rempli dans la partie session de la formation</p>
+                </div>
+                <div class="box mb-4">
+                    <h4 class="mb-2">Langue de la formation</h4>
+                    <p class="mb-0 d-flex justify-content-between">
+                       Français
+                    </p>
+                </div>
+            </div>
+            <!--FIN RIEN FAIRE -->
+            
+            
+            <!--OBJECTIF DE FORMATION -->
+            <div class="col-sm-6">
+                <div class="box mb-4">
+                    <h4 class="mb-2">Objectif de la formation</h4>
+                    <p class="mb-0">Avec cette formation Excel 2019®, vous pourrez en 123 leçons maitriser l¿intégralité
+                        des fonctionnalités d¿Excel : saisir des données, utiliser les fonctions courantes et avancées,
+                        les mises en forme conditionnelles, créer des graphiques, des tableaux croisés dynamiques et
+                        même des macros.</p>
+                    <p>{{ formation.objectif|safe }}</p>
+                </div>
+               <!--FIN OBJECTIF DE FORMATION -->
+                
+                <!--RESULTATS ATTENDUS -->
+                <div class="box mb-4">
+                    <h4 class="mb-2">Résultat attendus</h4>
+                    <p class="mb-0">Avec cette formation Excel 2019®, vous pourrez en 123 leçons maitriser l¿intégralité
+                        des fonctionnalités d¿Excel : saisir des données, utiliser les fonctions courantes et avancées,
+                        les mises en forme conditionnelles, créer des graphiques, des tableaux croisés dynamiques et
+                        même des macros.</p>
+                    <p>{{ formation.resultat_attendu|safe }}</p>
+                </div>
+                <!--RESULTATS ATTENDUS -->
+ 
+                
+                <!-- RIEN FAIRE -->
+                <div class="box mb-4">
+                    <h4 class="mb-2">Modalités pédagogiques adaptées aux personnes en situation de handicap</h4>
+                    <p class="mb-3">
+                        <i class="fa-solid fa-wheelchair"></i>
+                        <span>Ici sera affiché les informations que vous avez rempli dans la partie session de la formation</span>
+                    </p>
+                </div>
+
+               
+                <div class="box mb-4">
+                    <h4 class="mb-2">Certification</h4>
+                    <p class="mb-3">
+                        <span>Ici sera affiché les informations que vous avez rempli dans la partie session de la formation</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--FIN RIEN FAIRE -->
+
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{% if messages %}
+<section style="padding: 2rem 12%; justify-content: center;align-content: center;align-items: center;position: absolute;z-index: 5000;" class="tab">
+
+	{% for message in messages %}
+	<div class="">
+	    <div style="font-size:1rem;font-family: sans-serif;background: hsl(152, 51%, 52%);text-transform: none;opacity: .6" class="alert alert-{{ message.tags }} text-center">
+	    	<button type="button" id="close" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" style="font-size:2rem;padding-left: .5rem;cursor: pointer;background: red">&times;</span></button>
+	    	{{ message }}
+	    </div>
+	</div>
+	{% endfor %}
+</section>
+{% endif %}
+
+
+<script type="text/javascript">
+	let  butt = document.querySelector(".tab");
+
+	document.getElementById('close').addEventListener('click', function(e){
+	    butt.classList.add("hiddenMess")
+	})
+</script>

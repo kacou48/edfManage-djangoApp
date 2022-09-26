@@ -1,0 +1,15 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+{% block content %}
+<div class="aide">
+<div class="aideContent">
+	<form method="POST" action="" class="userFeedback">
+		{% csrf_token %}
+		{{ form }}
+		<button type="submit" class="">Envoyer</button>
+	</form>
+</div>
+</div>
+
+{% endblock %}

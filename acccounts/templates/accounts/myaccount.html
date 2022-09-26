@@ -1,0 +1,58 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+
+{% block content %}
+<div class="contairCompt">
+
+	<div class="header">
+		<div class="userCompte">
+			<img src="{{ user.userprofile.imageURL }}">
+			<h3 class="name">{{user.last_name}}</h3>
+			<p class="post">{{user.first_name}}</p>
+
+			<div class="navbarC">
+				<ul>
+					<li><a href="{% url 'desabonnement' %}">desabonner</a></li>
+					<li><a href="{% url 'password_reset' %}">changer password</a></li>
+					<li><a href="{% url 'profile_update' %}">modifier mon profile</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- info section -->
+	<section class="contactUser" id="contact">
+		<!--h1 class="heading">informations personnelles</h1-->
+		<div class="row">
+			<div class="content">
+				<h3 class="title">informations personnelles</h3>
+				<div class="info">
+					<h3><i class="fas fa-envelope"></i>{{user.email}}</h3>
+					<!--h3><i class="fas fa-phone"></i>+4556897</h3-->
+					<h3><i class="fa-solid fa-clock"></i>depuis le <span> {{ user.abonnee.debut }}</span></h3>
+					<h3><i class="fa-sharp fa-solid fa-hourglass-end"></i>jusqu'au <span> {{ user.abonnee.fin }}</span></h3>
+					<h3><i class="fa-sharp fa-solid fa-signal"></i>status: <span> {{ user.userprofile.get_status_display }}</span></h3>
+					
+
+				</div>
+				
+			</div>
+
+			<div class="contentLink">
+				<ul>
+					<li><a href="{% url 'desabonnement' %}">desabonner</a></li>
+					<li><a href="{% url 'password_reset' %}">changer password</a></li>
+					<li><a href="{% url 'profile_update' %}">modifier mon profile</a></li>
+				</ul>
+			</div>
+            
+		</div>
+
+	</section>
+	<!-- info section -->
+</div>
+
+<!--a href="{% url 'profile_update' %}">update</a-->
+{% endblock %}
+

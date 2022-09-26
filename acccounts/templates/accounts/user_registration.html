@@ -1,0 +1,155 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}un titre{% endblock %}
+
+{% block header %}
+<!--header section-->
+<header class="header">
+	<a href="{% url 'index' %}" class="logo"><!--img src=""--><span>MA PAGE</span><br> FORMATION</a>
+
+	<nav class="navbar">
+		<a href="{% url 'index' %}">Accuiel</a>
+		
+		{% if request.user.is_authenticated %}
+		<a href="{% url 'dashbord' %}">Dashbord</a>
+		{% else %}
+		<a href="{% url 'user_login' %}">connection</a>
+		{% endif %}
+	</nav>
+
+	<span class="material-icons-sharp fas-bar menu" id="menu-btn">menu</span>
+	<span class="material-icons-sharp fas-close menu" id="close-btn">close</span>
+
+</header>
+<!--header section end-->
+{% endblock header %}
+
+{% block home %}{% endblock home %}
+
+{% block content %}
+
+<section>
+<div class="containerAb loginPage" id="containerAb">
+<div class="column-6">
+    <div class="left-wrapper" id="left-wrapper">
+        <div id="left-wrapper-header">
+           <h3>Inscription</h3>
+        </div>
+        <div style="clear:left"></div>
+        <hr>
+
+        <form method="post">
+            {% csrf_token %}
+            {% for hidden_field in form.hidden_fields %}
+                {{ hidden_field.errors }}
+                {{ hidden_field }}
+            {% endfor %}
+
+            <div class="form-field-6">
+	        	<label class="" for="{{ registration_form.first_name.id_for_label }}">
+	        		<h2 class="place">{{ registration_form.first_name.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.first_name }}
+	        	{% if registration_form.first_name.errors %}
+	                {% for error in registration_form.first_name.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="form-field-6">
+	        	<label class="" for="{{ registration_form.last_name.id_for_label }}">
+	        		<h2 class="place">{{ registration_form.last_name.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.last_name }}
+	        	{% if registration_form.last_name.errors %}
+	                {% for error in registration_form.last_name.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="form-field-6">
+	        	<label class="" for="{{ registration_form.email.id_for_label }}">
+	        		<h2 class="place">{{ registration_form.email.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.email }}
+	        	{% if registration_form.email.errors %}
+	                {% for error in registration_form.email.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="form-field-6">
+	        	<label class="" for="{{ registration_form.password1.id_for_label }}">
+	        		<h2 class="place">{{ registration_form.password1.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.password1 }}
+	        	{% if registration_form.password1.errors %}
+	                {% for error in registration_form.password1.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="form-field-6">
+	        	<label class="" for="{{ registration_form.password2.id_for_label }}">
+	        		<h2 class="place">{{ registration_form.password2.label }}</h2>
+	        	</label>
+	        	<span>{{ registration_form.password2 }}
+	        	{% if registration_form.password2.errors %}
+	                {% for error in registration_form.password2.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>
+            </div>
+
+            <div class="coche form-field-6">
+				<div class="checkbox-content">
+					<label for="{{ registration_form.accepter.id_for_label }}" class="text">
+						<h2>{{ registration_form.accepter.label }}</h2>
+
+					</label>
+					<a style="font-size:1.5rem;" href="{% url 'confidentialite' %}" class="text"> les conditions de confidentialités</a>
+				</div>
+				<span>{{ registration_form.accepter }}
+	        	{% if registration_form.accepter.errors %}
+	                {% for error in registration_form.accepter.errors %}
+	                    <p class="">{{ error }}</p>
+	                {% endfor %}
+	            {% endif %}
+	            </span>		
+			</div>
+            
+            <input  class="myButton" style="background-color:#10a195" type="submit" value="connecter"> <br>
+            <span style="font-size:1.5rem;margin-top: .8rem">Avez vous déja un compte?<a href="{% url 'user_login' %}">Se connecter</a></span>    
+        </form>
+
+
+
+    </div>
+</div>
+
+<div class="column-6">
+    <div id="right-wrapper">
+
+        <h3>Quis nostrud exercitation ullamco laboris nisi</h3>
+
+        <p>lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+    </div>
+</div>
+</div>
+</section>
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock footer %}

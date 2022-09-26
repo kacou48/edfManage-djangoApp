@@ -1,0 +1,22 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+{% block content %}
+<div class="exportPage formGet" id="exForm">
+	<h1>Mise à jour: exportaion de {{ formation.identifiant }} vers EDOF.</h1>
+	<div class="box">
+		<p>Etre vous sur d'avoir respecté les consignes de modification? Entrez donc vos identifiants pour l'exportater vers la platform EDOF <a href="{% url 'list_formation' %}">annuler</a></p>
+		
+	</div>
+
+	<form method="POST" action="{% url 'export_file' formation.id %}">
+		{% csrf_token %}
+		{{ form }}
+		{% if request.user.userprofile.status == 'actif' %}
+		<button type="submit" id="btn1-send" class="">Envoyer</button>
+		{% else %}
+		<button class="" disabled>Vous n'etes pas abonné(e)</button>
+		{% endif %}
+	</form>
+</div>
+{% endblock %}

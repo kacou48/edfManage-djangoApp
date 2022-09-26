@@ -1,0 +1,54 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+{% block content %}
+<div class="listFormation">
+	<h2>liste de formations</h2>
+	{% if formations %}
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>voir</th>
+				<th>Rééditer</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for formation in formations %}
+			<tr>
+				<td>{{ formation.identifiant }}</td>
+				<td><a href="{% url 'detail_formation' formation.id %}"><i class="fa-sharp fa-solid fa-eye"></i></a></td>
+				<td><a href="{% url 'update_formation' formation.id %}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+				{% if formation.mis_a_jour %}
+				<td><a href="{% url 'choix_status' formation.id %}" style="color:green;"><i class="fa-solid fa-lock"></i></a></td>
+				{% else %}
+				<td><a href="{% url 'choix_status' formation.id %}"><i class="fa-solid fa-unlock-keyhole"></i></a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    <div class="ajouFormation">
+	<a href="{% url 'get_formation' %}" class="add-formation">
+		<i class="fas fa-plus"></i>
+		<h3>Ajouter une formation</h3>
+	</a>
+	<a href="{% url 'get_all_formations' %}" class="add-formation">
+		<i class="fas fa-plus"></i>
+		<h3>importer tous</h3>
+	</a>
+	</div>
+
+	{% else %}
+	<small>Votre liste est vide</small>
+	<div class="ajouFormation">
+	<a href="{% url 'get_formation' %}" class="add-formation">
+		<i class="fas fa-plus"></i>
+		<h3>Ajouter formation</h3>
+	</a>
+	</div>
+	{% endif %}
+
+</div>
+{% endblock %}

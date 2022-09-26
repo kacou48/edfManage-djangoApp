@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block head_title %}blog{% endblock %}
+
+{% block header %}
+<!--header section-->
+<header class="header">
+	<a href="{% url 'index' %}" class="logo"><!--img src=""--><span>MA PAGE</span><br> FORMATION</a>
+
+	<nav class="navbar">
+		<a href="{% url 'index' %}">Accuiel</a>
+		
+		{% if request.user.is_authenticated %}
+		<a href="{% url 'dashbord' %}">Dashbord</a>
+		{% else %}
+		<a href="{% url 'user_login' %}">connection</a>
+		{% endif %}
+	</nav>
+
+	<span class="material-icons-sharp fas-bar menu" id="menu-btn">menu</span>
+	<span class="material-icons-sharp fas-close menu" id="close-btn">close</span>
+
+</header>
+<!--header section end-->
+{% endblock header %}
+
+{% block home %}{% endblock home %}
+
+
+{% block content %}
+<section class="containerPost">
+	<div class="post-container">
+		<div class="post">
+			<img src="{{ post.imageURL }}">
+			<div class="date">
+				<span class="fa-solid fa-clock"></span>
+				<span>{{ post.date|naturaltime }}</span>
+			</div>
+			<h3 class="titre">{{ post.titre }}</h3>
+		    <div class="text">
+		    	{{ post.media }}{{ post.contenu|safe }}
+		    </div>
+		    <div class="liks">
+		    	<span class="user">
+		    		<i class="fas fa-user"></i>
+		    		<span>par l'admin</span>
+		    	</span>
+		    </div>
+		</div>
+	</div>
+</section>
+{% endblock %}

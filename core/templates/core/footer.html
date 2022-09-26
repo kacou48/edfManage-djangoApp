@@ -1,0 +1,69 @@
+<footer>
+	<div class="footer-container">
+		<div class="footer-info">
+			<a class="footer-title">
+			<img src="">
+			<span style="font-weight: 600;">Ma page formation</span>
+			</a>
+			<p class="footer-tagline">service de qualité</p>
+		</div>
+		<div class="footer-section-wrapper">
+			<div class="footer-section">
+				<h2 class="footer-category">domain.com</h2>
+				<nav class="footer-list">
+					<li>description<!--a href="">ligne 1</a--></li>
+					<li>de localité<!--a href="">ligne 2</a--></li>
+					<li>rue, ville<!--a href="">ligne 3</a--></li>
+					<li>pays<!--a href="">ligne 4</a--></li>
+					<!--li><a href="">ligne 5</a></li-->
+				</nav>
+			</div>
+
+			<div class="footer-section">
+				<h2 class="footer-category">À propos de nous</h2>
+				<nav class="footer-list">
+					<li><a href="#service">servises</a></li>
+					<li><a href="#about">nos offres</a></li>
+					<li><a href="#blog">blog</a></li>
+					<li><a href="#doctors">L'equipe</a></li>	
+				</nav>
+			</div>
+
+			<!--div class="footer-section">
+				<h2 class="footer-category">Category</h2>
+				<nav class="footer-list">
+					<li><a href="">ligne 1</a></li>
+					<li><a href="">ligne 2</a></li>
+					<li><a href="">ligne 3</a></li>
+					<li><a href="">ligne 4</a></li>
+					<li><a href="">ligne 5</a></li>
+				</nav>
+			</div-->
+
+			<div class="footer-section">
+				<h2 class="footer-category">D'autres liens</h2>
+				<nav class="footer-list">
+					<li><a href="#tarif">tarifs</a></li>
+					<li><a href="#enImage">PF en image</a></li>
+					<li><a href="#reviews">Les avis des clients</a></li>
+					<li><a href="{% url 'confidentialite' %}">conditions de confidentialités</a></li>
+					<li><a href="">ligne 5</a></li-->
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="footer-bottom-container">
+			<p class="footer-copyright">
+				&copy; copyright @ {% now "SHORT_DATETIME_FORMAT" %} | <span>MA PAGE FORMATION</span>
+			</p>
+			<div class="footer-social">
+				<a href="" class="footer-social-icon">
+				    <span class="fa-brands fa-facebook material-icons-sharp"></span>
+				    <span class="fa-brands fa-instagram material-icons-sharp"></span>
+				    <span class="fa-brands fa-twitter material-icons-sharp"></span>
+				</a>	
+			</div>
+		</div>
+	</div>
+</footer>

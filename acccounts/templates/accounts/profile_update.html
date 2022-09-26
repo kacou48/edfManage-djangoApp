@@ -1,0 +1,32 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="{% url 'profile_update' %}" id="upForm">
+   {% csrf_token %}
+	<fieldset class="form-group">
+		<legend class="border-bottom mb-4">Mise à jour de compte</legend>
+		{{ u_form }}
+		{{ p_form }}		
+	</fieldset>
+	<div class="form-group">
+		<button class="btn btn-outline-info btn-block" type="submit">Sauvez</button>
+	</div>
+
+</form>
+
+<!--div class="updateUser">
+<form action="">
+	<input type="text" placeholder="nom" class="box" name="">
+	<input type="text" placeholder="nom" class="box" name="">
+	<input type="text" placeholder="nom" class="box" name="">
+	<input type="text" placeholder="nom" class="box" name="">
+
+	<button type="submit" class="btn">mettre à jour</button>
+</form>
+</div-->
+{% endblock %}
+
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/br.css' %}">
+
+	<!-- font awesome cdnjs.com -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	<div class="container">
+		<nav class="dashNav">
+			<ul>
+				<li><a href="" class="logo">
+					<h3>PF</h3>
+					<!--span class="nav-item">PAGE  FORMATION</span-->
+				</a></li>
+
+				<li><a href="{% url 'dashbord' %}" class="">
+					<i class="fas fa-menorah"></i>
+					<span class="nav-item">tableau de bord</span>
+				</a></li>
+				<li><a href="{% url 'myaccount' %}" class="">
+					<i class="fas fa-user"></i>
+					<span class="nav-item">Profil</span>
+				</a></li>
+				<li><a href="{% url 'list_formation' %}" class="">
+					<i class="fas fa-database"></i>
+					<span class="nav-item">Formations</span>
+				</a></li>
+				<li><a href="{% url 'get_all_formations' %}" class="">
+					<i class="fas fa-chart-bar"></i>
+					<span class="nav-item">Mise à jour</span>
+				</a></li>
+				
+				{% if request.user.is_superuser %}
+				<li><a href="{% url 'admin:index' %}" class="">
+					<i class="fas fa-cog"></i>
+					<span class="nav-item">Admin</span>
+				</a></li>
+				{% else %}
+				<li><a href="{% url 'user_feedback' %}" class="">
+					<i class="fas fa-envelope"></i>
+					<span class="nav-item">feedback</span>
+				</a></li>
+				<li><a href="{% url 'aide' %}" class="">
+					<i class="fas fa-circle-question"></i>
+					<span class="nav-item">FAQ?</span>
+				</a></li>
+				{% endif %}
+				
+				<li><a href="{% url 'index' %}" class="">
+					<i class="fas fa-home"></i>
+					<span class="nav-item">Accuiel</span>
+				</a></li>
+				<li><a href="{% url 'user_logout' %}" class="logout">
+					<i class="fas fa-sign-out-alt"></i>
+					<span class="nav-item">Deconnecter</span>
+				</a></li>
+
+			</ul>
+		</nav>
+
+		<section class="main">
+			<div class="main-top">
+				<h1>MA PAGE FORMATION</h1>
+				<span class="fa-solid fa-align-justify"></span>
+				<!--i class="fas fa-user-cog"></i-->
+                <a href="{% url 'myaccount' %}">
+				<div class="profile">
+					<div class="profile-photo">
+						<img src="{{ user.userprofile.imageURL }}">
+					</div>
+					<div class="info">
+						<p><b>{{user.last_name}}</b></p>
+						<small class="text-muted">online</small>
+					</div>					
+				</div>
+				</a>
+			</div>
+
+			<div class="users">
+				
+                <div class="containerMain">
+                {% include 'core/messagesDash.html' %} 
+				{% block content %}
+				<div class="dashContent">
+					<h3>Tus ce que le client doit savoir ou doit faire au prealable avant de commencer</h3>
+					<p>Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit</p>
+					<p>
+						Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit
+					</p>
+					<p>
+						Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit
+					</p>
+					<p>
+						Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit
+						Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing elit Nam non est id tellus scelerisque ultricies. Fusce posuere, orci quis consectetur adipiscing
+					</p>
+				</div>
+                {% endblock %}
+                </div>
+			</div>
+		</section>
+	</div>
+
+    <!-- jquery link-->
+   <!--script type="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'js/tab.js' %}"></script>
+
+	<script>
+		
+	  	jQuery(function($){
+	  	  $(document).ajaxSend(function() {
+	         $(".loader").fadeIn(500)
+
+	        var loading = '<div class="loader"></div>'
+	  
+	        $('#btn-send').html(loading);
+
+	  	  });
+
+	  	  $("#btn-send").click(function() {
+	  	  	$.ajax({
+	  	  		type: 'GET',
+	  	  		success: function(data){
+	  	  			console.log(data)
+	  	  		}
+	  	  	}).done(function() {
+	  	  		var username= $('#id_username').val();
+	  	  		var pass= $('#id_password').val();
+	  	  		var form= $('#id_id_formation').val();
+	  	  		if (username === '' || pass === '' || form == '') {
+	  	  			setTimeout(function(){
+	  	  			    $(".loader").fadeOut(1000);
+	  	  		    }, 700);
+	  	  		}
+	  	  		else{
+	  	  			$(window).on('load',function(){
+	  		
+			            /*$('.loader').fadeOut(1000);*/
+			            $('#btn-send').fadeIn(1000);
+			        });
+	  	  		}      
+
+	  	  	});
+	  	  });
+	        
+	  	});
+
+
+
+	  	jQuery(function($){
+	  	  $(document).ajaxSend(function() {
+	         $(".loader").fadeIn(500)
+
+	        var loading = '<div class="loader"></div>'
+	  
+	        $('#btn1-send').html(loading);
+
+	  	  });
+
+	  	  $("#btn1-send").click(function() {
+	  	  	$.ajax({
+	  	  		type: 'GET',
+	  	  		success: function(data){
+	  	  			console.log(data)
+	  	  		}
+	  	  	}).done(function() {
+	  	  		var username= $('#id_username').val();
+	  	  		var pass= $('#id_password').val();
+	  	  		
+	  	  		if (username === '' || pass === '') {
+	  	  			setTimeout(function(){
+	  	  			    $(".loader").fadeOut(1000);
+	  	  		    }, 700);
+	  	  		}
+	  	  		else{
+	  	  			$(window).on('load',function(){
+	  		
+			            /*$('.loader').fadeOut(1000);*/
+			            $('#btn1-send').fadeIn(1000);
+			        });
+	  	  		}      
+
+	  	  	});
+	  	  });
+	        
+	  	});
+    </script>
+
+</body>
+</html>

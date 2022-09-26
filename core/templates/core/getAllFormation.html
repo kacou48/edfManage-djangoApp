@@ -1,0 +1,18 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+{% block content %}
+<div class="exportPage formGet" id="exForm">
+	<h1>importation de toutes vos formations</h1>
+	<div class="box">
+		<p>Entrez ici vos identifiants<a href="{% url 'list_formation' %}">annuler</a></p>
+		
+	</div>
+
+	<form method="POST" action="{% url 'get_all_formations'  %}">
+		{% csrf_token %}
+		{{ form }}
+		<button type="submit" id="btn1-send" class="">Envoyer</button>
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'accounts/dashbord.html' %}
+
+
+{% block content %}
+<section id="formGet" class="formGet exportPage">
+<h1>importation de formation</h1>
+<div class="box">
+    <p>Entrez ici vos identifiants<a href="{% url 'list_formation' %}">annuler</a></p>
+    
+</div>
+<form action="{% url 'get_formation' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <!--input type="submit" value="Submit" id="btn-send" class=""-->
+    <button type="submit" id="btn-send" class="">Envoyer</button>
+</form>
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,60 @@
+<section class="contact" id="contact">
+	<div class="container">
+		<div class="contactInfo">
+			<div>
+				<h2>contact info</h2>
+				<ul class="info">
+					<li>
+						<span class="fa-sharp fa-solid fa-location-dot imContact"></span>
+						<span>lorem upsi rue...  <br>
+						eessa quapou</span>
+					</li>
+					<li>
+						<span class="fas fa-envelope imContact"></span>
+						<span>@exemple.com</span>
+					</li>
+					<li>
+						<span class="fa-sharp fa-solid fa-phone imContact"></span>
+						<span>+33-58-456-41</span>
+					</li>
+				</ul>
+			</div>
+			<ul class="sci">
+				<li><a href=""><span class="fa-brands fa-facebook"></span></a></li>
+				<li><a href=""><span class="fa-brands fa-instagram"></span></a></li>
+				<li><a href=""><span class="fa-brands fa-twitter"></span></a></li>  
+			</ul>	
+		</div>	
+		<div class="contactForm" id="contactForm">
+			<h2>Envoyer message</h2>
+			<form class="formBox" id="formC">
+				{% csrf_token %}
+				<div class="impoutBox w50">
+					<input type="text" name="nom" required>
+					<span>Nom</span>
+				</div>
+				<div class="impoutBox w50">
+					<input type="text" name="prenom" required>
+					<span>Prenom</span>
+				</div>
+				<div class="impoutBox w50">
+					<input type="email" name="email" required>
+					<span>Email address</span>
+				</div>
+				<div class="impoutBox w50">
+					<input type="text" name="phone" required>
+					<span>Phone</span>
+				</div>
+				<div class="impoutBox w100">
+					<textarea name="message" required></textarea>
+					<span>Ecrivez vore message ici...</span>
+				</div>
+				<div class="impoutBox w100">
+					<input type="submit" value="Envoyer" id="contactNous">
+				</div>
+			</form>
+			
+		</div>	
+	</div>
+</section>
+

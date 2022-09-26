@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		body{
+			padding: 1rem 9%;
+			justify-content: center;
+			align-items: center;
+		}
+		.container{
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			background: #eee;
+			padding: 2rem 7%;
+			box-shadow: 0.5rem 1rem rgba(0, 0, 0, .1);
+		}
+		button{
+			padding: .5rem .5rem;
+			background: #ccc;
+			margin-top: 2rem;
+			box-shadow: 0 0 15px #999;
+			cursor: pointer;
+			font-size: 2rem;
+			border: none;
+			border-radius: .5rem;
+		}
+		form .champs{
+			margin-bottom: 5rem;
+		}
+		form .champs span{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+    	<a style="font-size: 1.8rem;padding-bottom: 2rem;" href="{% url 'list_formation' %}" class="">&#x2190; retourner</a>
+      <form method="POST" action="">
+      	{% csrf_token %}
+
+      	{{ formation.media }}
+      	<div class="champs">
+      		<h4>Objectif (3000 caractères code compris)</h4>
+      		{{ formation.objectif }}
+      	</div>
+      	<div class="champs">
+      		<h4>Contenu (3000 caractères code compris)</h4>
+      		{{ formation.contenu }}
+      	</div>
+      	<div class="champs">
+      		<h4>Points fort (255 caractères code compris)</h4>
+      		<span>Tous ajout d’image ou de vidéo dans la section « Point fort » de votre formation écrasera le 
+          texte initial pour des raisons de limite de caractères (255) proposer par EDOF. Cela permet de 
+          garantir le bon fonctionnement et affichage de l’image ou de la vidé</span>
+      		{{ formation.point_fort }}
+      	</div>
+      	<div>
+      		<h4>Résultats attendus (3000 caractères code compris)</h4>
+      		{{ formation.resultat_attendu }}
+      	</div>
+
+      	<div class="form-group loader">
+      		 {% if request.user.userprofile.status == 'actif' %}
+		       <button class="" type="submit">Enregistrer</button>
+		       {% else %}
+		       <button class="" disabled>Vous n'etes pas abonné</button>
+		       {% endif %}
+	      </div>
+      </form>
+    </div>
+</body>
+</html>
